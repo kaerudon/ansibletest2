@@ -1,0 +1,13 @@
+- hosts: {{ testhost }}
+  gather_facts: no
+
+  tasks:
+    - name: Read users from CSV file and return a list
+      read_csv:
+        path: users.csv
+        key: name
+      register: users
+
+    - name: debug csv
+      debug:
+        msg: "{{ users }}"
